@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
+
+        <title>Lokale Geschäfte in Leipzig - Karte</title>
+
+        <meta name="twitter:image:src" content="https://cdn.jsdelivr.net/gh/r-dent/BerlinLocals@master/docs/social-media-preview.png" />
+        <meta name="twitter:site" content="@rdentsays" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Lokale Geschäfte in Leipzig - Karte" />
+        <meta name="twitter:description" content="Eine interaktive Karte lokaler Anbieter in Leipzig mit Infos zur Unterstützung während der Corona Krise." />
+
+        <meta property="og:title" content="Lokale Geschäfte in Leipzig - Karte" />
+        <meta property="og:locale" content="de_DE" />
+        <meta name="description" content="Eine interaktive Karte lokaler Anbieter in Leipzig mit Infos zur Unterstützung während der Corona Krise." />
+        <meta property="og:description" content="Eine interaktive Karte lokaler Anbieter in Leipzig mit Infos zur Unterstützung während der Corona Krise." />
+        <link rel="canonical" href="https://r-dent.github.io/BerlinLocals/" />
+        <meta property="og:url" content="https://r-dent.github.io/BerlinLocals/" />
+        <meta property="og:image" content="https://cdn.jsdelivr.net/gh/r-dent/BerlinLocals@master/docs/social-media-preview.png">
+        <meta property="og:site_name" content="Lokale Geschäfte in Leipzig - Karte" />
+        <style>
+            html, body {
+                height: 100%;
+                margin: 0;
+            }
+            #button-container {
+                height: 20%; 
+                text-align: center;
+                margin-top: 2em;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div id="mapid" style="height: 100%"></div>
+        <script src="map.js"></script>
+        <script>
+            var map = new LocalBusinessMap('mapid', {
+                mapBoxKey: 'pk.eyJ1Ijoicm9tYW5naWxsZSIsImEiOiJjazhmZXNleTcwMDdjM2hwMWw2a3Z6MGYxIn0.pnoK-wT1_i47xTYNvtlRbg',
+                mapBoxStyle: 'romangille/ck8ffr84j1z8p1inv9r486iyo',
+                clusterBelowZoom: 15,
+                showLocateButton: true
+            })
+        </script>
+    </body>
+</html>
