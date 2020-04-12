@@ -102,15 +102,37 @@ class LocalBusinessMap {
     }
 
     onEachMapFeature(feature, layer) {
+
+        const data = feature.properties.data
+        const title = data.name
+        var texts = [data.angebot]
+        var contactInfos = []
+        const address = data.strasse_nr +'<br>'+ data.plz +' Berlin'
+
+        if (data.beschreibung_lieferangebot != '') {
+            texts.push('<strong>Lieferung:</strong> '+ data.beschreibung_lieferangebot)
+        }
+        if (data.angebot_selbstabholung != '') {
+            texts.push('<strong>Abholung:</strong> '+ data.angebot_selbstabholung)
+        }
+
+        if (data.w3 != '') {
+            contactInfos.push('Web: <a href="'+ data.w3 +'">'+ data.w3 +'</a>')
+        }
+        if (data.mail != '') {
+            contactInfos.push('Mail: <a href="mailto:'+ data.mail +'">'+ data.mail +'</a>')
+        }
+        if (data.fon != '') {
+            contactInfos.push('Phone: <a href="tel:'+ data.fon +'">'+ data.fon +'</a>')
+        }
         layer.bindPopup(
-            '<h3>'+ feature.properties.data.name +'</h3><p>'+ feature.properties.data.angebot +'</p>'
+            '<h3>'+ title +'</h3><p>'+ texts.join('</p><p>') +'</p><p>'+ contactInfos.join('<br>') +'</p><p>'+ address +'</p>'
         )
     }
 
     renderMapMarker(geoJsonPoint, coordinatate) {
 
         var image = 'not_listed_location'
-        console.log(geoJsonPoint.properties.data.art)
         switch (geoJsonPoint.properties.data.art) {
             case 'Baumarkt': image = 'business_center'; break;
             case 'Blumenladen': image = 'local_florist'; break;
