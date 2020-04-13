@@ -41,7 +41,7 @@ class LocalBusinessMap {
         mapContainer.classList.add('lh-mp-ctnr')
         mapContainer.innerHTML = '<div id="loading"><svg height="100" width="100" class="spinner"><circle cx="50" cy="50" r="20" class="inner-circle" /></svg></div>'
         
-        const resourceVersionTag = '20200410'
+        const resourceVersionTag = '20200413'
         const dataUrl = 'https://www.berlin.de/sen/web/service/liefer-und-abholdienste/index.php/index/all.gjson?q='
         const cssUrl = (this.isLocal ? '' : this.repositoryBaseUrl +'docs/') +'map-style.css?v='+ resourceVersionTag
 
@@ -105,9 +105,11 @@ class LocalBusinessMap {
 
         const data = feature.properties.data
         const title = data.name
+        const coord = feature.geometry.coordinates
         var texts = [data.angebot]
         var contactInfos = []
-        const address = data.strasse_nr +'<br>'+ data.plz +' Berlin'
+        const address = '<a onclick="GeoHelper.navigate('+ coord[1] +', '+ coord[0] +')" class="directions-link"><i class="fa fa-directions"></i></a>'+ 
+            data.strasse_nr +'<br>'+ data.plz +' Berlin'
 
         if (data.beschreibung_lieferangebot != '') {
             texts.push('<strong>Lieferung:</strong> '+ data.beschreibung_lieferangebot)
@@ -322,7 +324,17 @@ class GeoHelper {
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
         var d = R * c; // Distance in km
         return d;
-      } 
+      }
+
+      static navigate(lat, lon) {
+        // If it's an iPhone..
+        if( (navigator.platform.indexOf("iPhone") != -1) 
+            || (navigator.platform.indexOf("iPod") != -1)
+            || (navigator.platform.indexOf("iPad") != -1))
+             window.open('maps://www.google.com/maps/dir/?api=1&travelmode=driving&layer=traffic&destination='+ lat +','+ lon);
+        else
+             window.open('https://www.google.com/maps/dir/?api=1&travelmode=driving&layer=traffic&destination='+ lat +','+ lon);
+    }
 }
 
 class DocumentHelper {
