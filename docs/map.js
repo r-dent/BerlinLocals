@@ -41,7 +41,7 @@ class LocalBusinessMap {
         mapContainer.classList.add('lh-mp-ctnr')
         mapContainer.innerHTML = '<div id="loading"><svg height="100" width="100" class="spinner"><circle cx="50" cy="50" r="20" class="inner-circle" /></svg></div>'
         
-        const resourceVersionTag = '20200413'
+        const resourceVersionTag = '202004131'
         const dataUrl = 'https://www.berlin.de/sen/web/service/liefer-und-abholdienste/index.php/index/all.gjson?q='
         const cssUrl = (this.isLocal ? '' : this.repositoryBaseUrl +'docs/') +'map-style.css?v='+ resourceVersionTag
 
@@ -161,13 +161,23 @@ class LocalBusinessMap {
         return L.marker(coordinatate, {icon: icon})
     }
 
+    renderClusterMarker(cluster) {
+        const iconUrl = (this.isLocal ? '' : this.repositoryBaseUrl +'docs/') +'images/group_marker.svg'
+        return L.divIcon({
+            className: 'cluster-marker',
+            iconSize: [34, 40],
+            html: '<img src="'+ iconUrl +'"/><div>' + cluster.getChildCount() + '</div>'
+        })
+    }
+
     addLayersToMap(layers, map) {
 
         if (this.useClustering) {
 
             const addClusterLayer = (layers, map) => {
                 var markers = L.markerClusterGroup({
-                    disableClusteringAtZoom: 15
+                    disableClusteringAtZoom: 15,
+                    iconCreateFunction: (cluster) => this.renderClusterMarker(cluster)
                 });
                 for (const id in layers) {
                     markers.addLayer(layers[id])
