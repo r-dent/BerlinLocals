@@ -132,28 +132,28 @@ class LocalBusinessMap {
 
     renderMapMarker(geoJsonPoint, coordinatate) {
 
-        var image = 'not_listed_location'
+        var image = 'other'
         switch (geoJsonPoint.properties.data.art) {
-            case 'Baumarkt': image = 'business_center'; break;
-            case 'Blumenladen': image = 'local_florist'; break;
-            case 'Buchhandlung': image = 'local_library'; break;
-            case 'Bürobedarf': image = 'apartment'; break;
-            case 'Gastronomie': image = 'local_pizza'; break;
-            case 'Gesundheit': image = 'local_hospital'; break;
-            case 'Getränkemarkt': image = 'local_drink'; break;
-            case 'Haushalt': image = 'home'; break;
-            case 'Mode / Bekleidung': image = 'local_offer'; break;
-            case 'Möbel': image = 'king_bed'; break;
-            case 'Sportwaren': image = 'sports_tennis'; break;
+            case 'Baumarkt': image = 'hardwarestore'; break;
+            case 'Blumenladen': image = 'flowers'; break;
+            case 'Buchhandlung': image = 'books'; break;
+            case 'Bürobedarf': image = 'office'; break;
+            case 'Gastronomie': image = 'food'; break;
+            case 'Gesundheit': image = 'medical'; break;
+            case 'Getränkemarkt': image = 'drinks'; break;
+            case 'Haushalt': image = 'household'; break;
+            case 'Mode / Bekleidung': image = 'fashion'; break;
+            case 'Möbel': image = 'furniture'; break;
+            case 'Sportwaren': image = 'sports'; break;
         }
 
-        const imageLink = 'https://fonts.gstatic.com/s/i/materialiconsoutlined/'+ image +'/v4/24px.svg'
+        const imageLink = (this.isLocal ? '' : this.repositoryBaseUrl +'docs/') +'images/marker_'+ image +'.svg'
         var icon = L.icon({
             iconUrl: imageLink,
-            iconSize: [24, 24],
-            shadowUrl: (this.isLocal ? '' : this.repositoryBaseUrl +'docs/') +'marker.svg',
-            shadowSize: [44, 44],
-            shadowAnchor: [22, 15]
+            iconSize: [27, 39],
+            shadowUrl: (this.isLocal ? '' : this.repositoryBaseUrl +'docs/') +'images/marker_shadow.svg',
+            shadowSize: [13, 8],
+            shadowAnchor: [7, -13]
         });
         return L.marker(coordinatate, {icon: icon})
     }

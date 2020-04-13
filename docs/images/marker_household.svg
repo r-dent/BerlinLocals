@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="29px" height="40px" viewBox="0 0 29 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>marker_household</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-120.000000, -139.000000)">
+            <g id="Marker" transform="translate(121.000000, 140.000000)">
+                <g stroke-width="1" fill-rule="evenodd" fill="#813232" id="Oval-Copy" stroke="#FFFFFF">
+                    <path d="M13.5,37.9697106 C16.1718764,37.9697106 13.5,35.6901509 25.2764982,20.0281936 C26.3740342,18.0830657 27,15.8384918 27,13.4482759 C27,6.02099819 20.9558441,-2.38889368e-15 13.5,-2.38889368e-15 C6.04415588,-2.38889368e-15 0,6.02099819 0,13.4482759 C0,16.0527171 0.743199576,18.4842398 2.02985779,20.5438684 C13.5,35.6901509 10.8281236,37.9697106 13.5,37.9697106 Z"></path>
+                </g>
+                <g id="cat_household" fill="#FFFFFF" fill-rule="nonzero">
+                    <polygon id="h" points="12.1365 20.925 12.1365 14.823 16.2135 14.823 16.2135 20.925 20.2635 20.925 20.2635 13.473 21.6135 13.473 19.5885 11.448 19.5885 6.696 16.8885 6.696 16.8885 8.721 14.1615 6.021 6.7095 13.473 8.0595 13.473 8.0595 20.925"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
