@@ -1,4 +1,5 @@
 /* Popup */
+
 .lh-mp-ctnr .directions-link {
     float: right;
     cursor: pointer;
@@ -14,6 +15,23 @@
     width: 100%;
     color: #fff;
 }
+
+/* Add link */
+
+.lh-mp-ctnr .add-entry a {
+    display: inline-block;
+    background: #82b9ea;
+    padding: 0.7em;
+    border-radius: 10px;
+    color: #fff;
+    text-decoration: none;
+    font-size: larger;
+}
+
+.lh-mp-ctnr .add-entry a:hover {
+    background: #add7fc;
+}
+
 
 /* Select */
 

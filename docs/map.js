@@ -41,7 +41,7 @@ class LocalBusinessMap {
         mapContainer.classList.add('lh-mp-ctnr')
         mapContainer.innerHTML = '<div id="loading"><svg height="100" width="100" class="spinner"><circle cx="50" cy="50" r="20" class="inner-circle" /></svg></div>'
         
-        const resourceVersionTag = '202004131'
+        const resourceVersionTag = '20200413-2'
         const dataUrl = 'https://www.berlin.de/sen/web/service/liefer-und-abholdienste/index.php/index/all.gjson?q='
         const cssUrl = (this.isLocal ? '' : this.repositoryBaseUrl +'docs/') +'map-style.css?v='+ resourceVersionTag
 
@@ -97,6 +97,14 @@ class LocalBusinessMap {
                 L.control.locate({position: 'bottomleft', showCompass: false}).addTo(map);
             })
         }
+
+        var addButton = L.control({position: 'bottomright'});
+        addButton.onAdd = (map) => {
+            var div = L.DomUtil.create('div', 'add-entry')
+            div.innerHTML = '<a href="https://citylabberlin.typeform.com/to/QjhJbt" target="_blank"><i class="fa fa-plus"></i> Unternehmen hinzufügen</a>'
+            return div
+        };
+        addButton.addTo(map);
 
         return map
     }
