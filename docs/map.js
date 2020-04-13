@@ -106,9 +106,10 @@ class LocalBusinessMap {
         const data = feature.properties.data
         const title = data.name
         const coord = feature.geometry.coordinates
+        const addressString = data.strasse_nr +' '+ data.plz +' Berlin'
         var texts = [data.angebot]
         var contactInfos = []
-        const address = '<a onclick="GeoHelper.navigate('+ coord[1] +', '+ coord[0] +')" class="directions-link"><i class="fa fa-directions"></i></a>'+ 
+        const address = '<a onclick="GeoHelper.navigate('+ coord[1] +','+ coord[0] +',\''+ addressString +'\')" class="directions-link"><i class="fa fa-directions"></i></a>'+ 
             data.strasse_nr +'<br>'+ data.plz +' Berlin'
 
         if (data.beschreibung_lieferangebot != '') {
@@ -326,14 +327,14 @@ class GeoHelper {
         return d;
       }
 
-      static navigate(lat, lon) {
+      static navigate(lat, lon, address) {
         // If it's an iPhone..
         if( (navigator.platform.indexOf("iPhone") != -1) 
             || (navigator.platform.indexOf("iPod") != -1)
             || (navigator.platform.indexOf("iPad") != -1))
-             window.open('maps://www.google.com/maps/dir/?api=1&travelmode=driving&layer=traffic&destination='+ lat +','+ lon);
+             window.open('https://maps.apple.com/?daddr='+ address);
         else
-             window.open('https://www.google.com/maps/dir/?api=1&travelmode=driving&layer=traffic&destination='+ lat +','+ lon);
+             window.open('https://www.google.com/maps/dir/?api=1&destination='+ lat +','+ lon);
     }
 }
 
