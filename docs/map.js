@@ -109,7 +109,7 @@ class LocalBusinessMap {
         return map
     }
 
-    onEachMapFeature(feature, layer) {
+    showMarkerPopup(feature, layer) {
 
         const data = feature.properties.data
         const title = data.name
@@ -167,6 +167,7 @@ class LocalBusinessMap {
             shadowAnchor: [7, -13]
         });
         return L.marker(coordinatate, {icon: icon})
+            .bindTooltip(geoJsonPoint.properties.data.name, {offset: [0, 16]})
     }
 
     renderClusterMarker(cluster) {
@@ -213,7 +214,7 @@ class LocalBusinessMap {
         for (const catId in this.categories) {
             const category = this.categories[catId]
             const geoLayer = L.geoJSON(geoJson, {
-                onEachFeature: this.onEachMapFeature,
+                onEachFeature: this.showMarkerPopup,
                 pointToLayer: (point, coord) => this.renderMapMarker(point, coord),
                 filter: function(feature, layer) {
                     return feature.properties.data.art == category
