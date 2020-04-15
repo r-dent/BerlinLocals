@@ -6,14 +6,14 @@ You can embed the map on your own website by adding the following code:
 
 ```html
 <div id="mapid" style="height: 200px;"></div>
-<script src="https://cdn.jsdelivr.net/gh/r-dent/BerlinLocals@master/docs/map.js" onload="new LocalBusinessMap('mapid')"></script>
+<script src="https://cdn.jsdelivr.net/gh/r-dent/BerlinLocals@master/map.js" onload="new LocalBusinessMap('mapid')"></script>
 ```
 
 If you want to customize the map, you can pass some options to the initializer.
 
 ```html
 <div id="mapid" style="height: 200px;"></div>
-<script src="https://cdn.jsdelivr.net/gh/r-dent/BerlinLocals@master/docs/map.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/r-dent/BerlinLocals@master/map.js"></script>
 <script>
     var localsMap = new LocalBusinessMap('mapid', {
         mapBoxKey: 'your_mapbox_key',

@@ -43,7 +43,7 @@ class LocalBusinessMap {
         
         const resourceVersionTag = '20200413-2'
         const dataUrl = 'https://www.berlin.de/sen/web/service/liefer-und-abholdienste/index.php/index/all.gjson?q='
-        const cssUrl = (this.isLocal ? '' : this.repositoryBaseUrl +'docs/') +'map-style.css?v='+ resourceVersionTag
+        const cssUrl = (this.isLocal ? '' : this.repositoryBaseUrl) +'map-style.css?v='+ resourceVersionTag
 
         DocumentHelper.loadCss(cssUrl)
         DocumentHelper.loadCss('https://use.fontawesome.com/releases/v5.8.1/css/all.css')
@@ -128,7 +128,7 @@ class LocalBusinessMap {
         }
 
         if (data.w3 != '') {
-            contactInfos.push('Web: <a href="'+ data.w3 +'">'+ data.w3 +'</a>')
+            contactInfos.push('Web: <a href="'+ data.w3 +'" target="_blank">'+ data.w3 +'</a>')
         }
         if (data.mail != '') {
             contactInfos.push('Mail: <a href="mailto:'+ data.mail +'">'+ data.mail +'</a>')
@@ -158,11 +158,11 @@ class LocalBusinessMap {
             case 'Sportwaren': image = 'sports'; break;
         }
 
-        const imageLink = (this.isLocal ? '' : this.repositoryBaseUrl +'docs/') +'images/marker_'+ image +'.svg'
+        const imageLink = (this.isLocal ? '' : this.repositoryBaseUrl) +'images/marker_'+ image +'.svg'
         var icon = L.icon({
             iconUrl: imageLink,
             iconSize: [27, 39],
-            shadowUrl: (this.isLocal ? '' : this.repositoryBaseUrl +'docs/') +'images/marker_shadow.svg',
+            shadowUrl: (this.isLocal ? '' : this.repositoryBaseUrl) +'images/marker_shadow.svg',
             shadowSize: [13, 8],
             shadowAnchor: [7, -13]
         });
@@ -171,7 +171,7 @@ class LocalBusinessMap {
     }
 
     renderClusterMarker(cluster) {
-        const iconUrl = (this.isLocal ? '' : this.repositoryBaseUrl +'docs/') +'images/group_marker.svg'
+        const iconUrl = (this.isLocal ? '' : this.repositoryBaseUrl) +'images/group_marker.svg'
         return L.divIcon({
             className: 'cluster-marker',
             iconSize: [34, 40],
